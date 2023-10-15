@@ -1,16 +1,16 @@
-
+import { NavLink } from "react-router-dom"
 
 export const Header = () => {
 
     return (
         <div>
             <nav>
-            {/* <StyledLink to="/" end>
+            <NavLink to="/" end>
           Home
-        </StyledLink>
-        <StyledLink to="/movie" end>
+        </NavLink>
+        <NavLink to="/movie" end>
           Movie
-        </StyledLink> */}
+        </NavLink>
                 
             </nav>
 

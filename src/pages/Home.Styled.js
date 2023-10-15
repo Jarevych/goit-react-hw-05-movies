@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledAppContainer = styled.div`
-  header {
+  .header {
     background-color: rgb(34, 75, 153);
   }
   .searchbutton {
@@ -10,16 +10,17 @@ export const StyledAppContainer = styled.div`
     background: none;
     border: none;
   }
-  movielist {
+  .movielist {
     display: flex;
     justify-content: center;
     gap: 20px;
     flex-wrap: wrap;
   }
-  movieitem {
+  .movieitem {
     display: flex;
+    flex-direction: column;
   }
-  movietitle {
+  .movietitle {
     max-width: 250px;
   }
 `;

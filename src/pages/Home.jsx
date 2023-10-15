@@ -1,7 +1,8 @@
 import { useEffect, useState, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 // import { Routes, Route } from "react-router-dom";
 import { fetchMovies } from 'api';
-import * as S from './Home.Styled';
+import { StyledAppContainer } from './Home.Styled';
 
 export const HomePage = () => {
   const [trendList, setTrendList] = useState(null);
@@ -23,10 +24,13 @@ export const HomePage = () => {
 
   const showMovies = Array.isArray(trendList) && trendList.length;
   return (
-    <S.StyledAppContainer>
+    <StyledAppContainer>
+                <h2>Trending today</h2>
+
       <ul className="movielist">
         {showMovies &&
           trendList.map(trendItem => (
+            <Link to={`/movies/${trendItem.id}`}>
             <li className='movieitem' key={trendItem.id}>
               <h3 className='movietitle'>{trendItem.title || trendItem.name || 'movie'}</h3>
               <img
@@ -38,9 +42,9 @@ export const HomePage = () => {
                 width={250}
                 alt={trendItem.title ? trendItem.name : 'poster'}
               />
-            </li>
+            </li></Link>
           ))}
       </ul>
-    </S.StyledAppContainer>
+    </StyledAppContainer>
   );
 };

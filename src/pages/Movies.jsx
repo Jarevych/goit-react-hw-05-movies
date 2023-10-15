@@ -1,13 +1,11 @@
-import { useEffect, useState, useCallback } from 'react';
 // import { Routes, Route } from "react-router-dom";
-import { fetchMovies } from 'api';
 
 export const Movies = () => {
   
 
   return (
     <div>
-        <form className="form" onSubmit={getTrendMovies}>
+        <form className="form" >
         <input
           className="input"
           type="text"
@@ -20,7 +18,6 @@ export const Movies = () => {
           {/* <FontAwesomeIcon icon={faMagnifyingGlass} beat /> */}
         </button>
       </form>
-        <h2>Trending today</h2>
 
     </div>
   );

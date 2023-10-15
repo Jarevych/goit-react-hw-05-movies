@@ -1,10 +1,11 @@
 import { NavLink } from "react-router-dom"
+import { StyledAppHeader } from './HeaderStyled'
 
 export const Header = () => {
 
     return (
-        <div>
-            <nav>
+        <StyledAppHeader>
+            <nav className="header-nav">
             <NavLink to="/" end>
           Home
         </NavLink>
@@ -14,6 +15,6 @@ export const Header = () => {
                 
             </nav>
 
-        </div>
+        </StyledAppHeader>
     )
 }

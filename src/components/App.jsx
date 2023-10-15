@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import React from 'react';
 import { Movies } from 'pages/Movies';
 import { Header } from 'pages/Header';
+import { MovieDetails } from 'pages/MovieDetails';
 
 // import { Routes, Route } from 'react-router-dom';
 
@@ -12,9 +13,10 @@ export const App = () => {
       <Header/>
      
      <Routes>
-     <Route> <Route path="/" element={<HomePage/>} /></Route>
+      <Route path="/" element={<HomePage/>} />
 
-      <Route> <Route path="/movie" element={<Movies />} /></Route>
+      <Route path="/movie" element={<Movies />} />
+      <Route path="/movies/:movieId" element={<MovieDetails/>} />
      </Routes>
     </div>
   );

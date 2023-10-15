@@ -18,9 +18,11 @@ export const StyledAppContainer = styled.div`
   }
   .movieitem {
     display: flex;
-    flex-direction: column;
+    flex-direction: column
   }
   .movietitle {
     max-width: 250px;
   }
+  .page-title {
+    text-align: center;  }
 `;

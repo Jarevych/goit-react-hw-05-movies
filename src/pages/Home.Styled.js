@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledAppContainer = styled.div`
-  .header {
-    background-color: rgb(34, 75, 153);
-  }
+
   .searchbutton {
     position: absolute;
     height: 38px;

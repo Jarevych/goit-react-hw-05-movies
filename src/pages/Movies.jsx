@@ -1,7 +1,9 @@
 // import { Routes, Route } from "react-router-dom";
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { fetchSearchMovie } from '../api'
+import {StyledAppContainer} from './MoviesStyled'
+
 
 export const Movies = () => {
   const [inputValue, setInputValue] = useState(null);
@@ -23,8 +25,10 @@ export const Movies = () => {
     }
       catch(error) {
         console.log('помилка запиту');
-      };
-   
+      }
+      finally {
+        setInputValue('')
+      }
   };
 
 //   useEffect(() => {
@@ -42,7 +46,7 @@ export const Movies = () => {
   return (
     
 
-    <div>
+    <StyledAppContainer>
       <form className="form" onSubmit={Search}>
         <input
           className="input"
@@ -80,7 +84,7 @@ export const Movies = () => {
       </Link>
     ))}
 </ul>
-  </div>
+  </StyledAppContainer>
  
   );
 };

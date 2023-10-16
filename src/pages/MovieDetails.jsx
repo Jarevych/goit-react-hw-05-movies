@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+// import { Route, Routes } from 'react-router-dom';
 import { StyledButtonLink } from './MovieDetailsStyled';
 import { Link, useParams } from 'react-router-dom';
 import { fetchMovieDetails } from '../api';
@@ -20,7 +20,7 @@ export const MovieDetails = () => {
         console.log('помилка запиту');
       });
     console.log(movieData);
-  }, [movieId]);
+  });
 
   if (movieData === null) {
     return <div>Loading...</div>;

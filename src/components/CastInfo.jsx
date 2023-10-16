@@ -17,7 +17,7 @@ export const CastDetails = () => {
       .catch(error => {
         console.log('Cast details mistake');
       });
-  }, [movieId]);
+  });
   const castArray = Array.isArray(castData) ? castData : [];
     console.log(castArray);
   return (

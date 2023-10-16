@@ -1,8 +1,9 @@
-// import { Routes, Route } from "react-router-dom";
-import {StyledButtonLink} from './MovieDetailsStyled'
-import { useParams } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
+import { StyledButtonLink } from './MovieDetailsStyled';
+import { Link, useParams } from 'react-router-dom';
 import { fetchMovieDetails } from '../api';
 import { useEffect, useState } from 'react';
+import { CastDetails } from 'components/CastInfo';
 
 export const MovieDetails = () => {
   const { movieId } = useParams();
@@ -13,14 +14,13 @@ export const MovieDetails = () => {
   useEffect(() => {
     fetchMovieDetails(movieId)
       .then(response => {
-        setMovieData(prevMovieData => response);
+        setMovieData(response);
       })
       .catch(error => {
         console.log('помилка запиту');
       });
     console.log(movieData);
   }, [movieId]);
-  
 
   if (movieData === null) {
     return <div>Loading...</div>;
@@ -29,9 +29,12 @@ export const MovieDetails = () => {
     <div>
       <StyledButtonLink to="/">Go Back </StyledButtonLink>
       <div>
-       
         <img
-          src={movieData.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : defaultImg}
+          src={
+            movieData.poster_path
+              ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}`
+              : defaultImg
+          }
           alt={movieData.title}
         />
         <h3>{movieData.title || movieData.name}</h3>
@@ -39,14 +42,20 @@ export const MovieDetails = () => {
         <p className="details-name">Owerview</p>
         <p className="details-info">{movieData.overview}</p>
         <p className="details-name">Genres</p>
-        <p className="details-info">{movieData.genres.map((genre) => genre.name).join(', ')}</p>
+        <p className="details-info">
+          {movieData.genres.map(genre => genre.name).join(', ')}
+        </p>
       </div>
 
       <p className="details-info"></p>
       <ul>
+        <Link to={`/movies/${movieId}/cast`}>Cast</Link>
         <li>Cast</li>
         <li>Reviews</li>
       </ul>
+      
+        <CastDetails/>
+     
     </div>
   );
 };

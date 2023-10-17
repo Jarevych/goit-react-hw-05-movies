@@ -1,91 +1,14 @@
-
-adult
-: 
-false
-backdrop_path
-: 
-"/rMvPXy8PUjj1o8o1pzgQbdNCsvj.jpg"
-belongs_to_collection
-: 
-{id: 126125, name: 'The Expendables Collection', poster_path: '/zwnCtNpHa6TFI1z20LPFgdY2Qks.jpg', backdrop_path: '/lA7oDSt6LkyDqtbFGbyuG0afmTI.jpg'}
-budget
-: 
-100000000
-genres
-: 
-(3) [{…}, {…}, {…}]
-homepage
-: 
-"https://expendables.movie/"
-id
-: 
-299054
-imdb_id
-: 
-"tt3291150"
-original_language
-: 
-"en"
-original_title
-: 
-"Expend4bles"
-overview
-: 
-"Armed with every weapon they can get their hands on and the skills to use them, The Expendables are the world’s last line of defense and the team that gets called when all other options are off the table. But new team members with new styles and tactics are going to give “new blood” a whole new meaning."
-popularity
-: 
-599.754
-poster_path
-: 
-"/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg"
-production_companies
-: 
-Array(3)
-0
-: 
-{id: 1020, logo_path: '/kuUIHNwMec4dwOLghDhhZJzHZTd.png', name: 'Millennium Media', origin_country: 'US'}
-1
-: 
-{id: 48738, logo_path: null, name: 'Campbell Grobman Films', origin_country: 'US'}
-2
-: 
-{id: 1632, logo_path: '/cisLn1YAUuptXVBa0xjq7ST9cH0.png', name: 'Lionsgate', origin_country: 'US'}
-length
-: 
-3
-[[Prototype]]
-: 
-Array(0)
-production_countries
-: 
-[{…}]
-release_date
-: 
-"2023-09-15"
-revenue
-: 
-46869371
-runtime
-: 
-103
-spoken_languages
-: 
-[{…}]
-status
-: 
-"Released"
-tagline
-: 
-"They'll die when they're dead."
-title
-: 
-"Expend4bles"
-video
-: 
-false
-vote_average
-: 
-6.1
-vote_count
-: 
-167
+app.jsx
+api.js
+components: 
+    CastInfo.jsx    
+    ReviewsInfo.jsx
+pages: 
+    Home.Styled.js
+    HomePage.jsx
+    MovieDetails.jsx
+    MovieDetailsStyled.js
+    Movies.jsx
+    MoviesStyled.js
+    SharedLayouts.jsx
+    SharedLayoutsStyled.js

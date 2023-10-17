@@ -1,9 +1,15 @@
 // import { Route, Routes } from 'react-router-dom';
-import { StyledButtonLink } from './MovieDetailsStyled';
-import { Link, useParams } from 'react-router-dom';
+import { Suspense } from "react";
+import {
+  StyledButtonLink,
+  StyledMenu,
+  StyledMenuItem,
+  StyledMenuLink,
+} from './MovieDetailsStyled';
+import { Outlet, useParams } from 'react-router-dom';
 import { fetchMovieDetails } from '../api';
 import { useEffect, useState } from 'react';
-import { CastDetails } from 'components/CastInfo';
+// import { CastDetails } from 'components/CastInfo';
 
 export const MovieDetails = () => {
   const { movieId } = useParams();
@@ -20,7 +26,7 @@ export const MovieDetails = () => {
         console.log('помилка запиту');
       });
     console.log(movieData);
-  });
+  }, []);
 
   if (movieData === null) {
     return <div>Loading...</div>;
@@ -46,16 +52,18 @@ export const MovieDetails = () => {
           {movieData.genres.map(genre => genre.name).join(', ')}
         </p>
       </div>
-
       <p className="details-info"></p>
-      <ul>
-        <Link to={`/movies/${movieId}/cast`}>Cast</Link>
-        <li>Cast</li>
-        <li>Reviews</li>
-      </ul>
-      
-        <CastDetails/>
-     
+      <StyledMenu>
+        <StyledMenuItem>
+          <StyledMenuLink to="cast">Cast</StyledMenuLink>
+        </StyledMenuItem>
+        <StyledMenuItem>
+          <StyledMenuLink to="review">Review</StyledMenuLink>
+        </StyledMenuItem>
+      </StyledMenu>
+      <Suspense fallback={<div>Loading subpage...</div>}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };

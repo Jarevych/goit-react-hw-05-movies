@@ -9,6 +9,7 @@ import {
 import { Outlet, useParams } from 'react-router-dom';
 import { fetchMovieDetails } from '../api';
 import { useEffect, useState } from 'react';
+import { Dna } from "react-loader-spinner";
 // import { CastDetails } from 'components/CastInfo';
 
 export const MovieDetails = () => {
@@ -29,7 +30,14 @@ export const MovieDetails = () => {
   }, []);
 
   if (movieData === null) {
-    return <div>Loading...</div>;
+    return <div className="centered"><Dna
+    visible={true}
+    height="80"
+    width="80"
+    ariaLabel="dna-loading"
+    wrapperStyle={{}}
+    wrapperClass="dna-wrapper"
+  /></div>;
   }
   return (
     <div>
@@ -58,10 +66,17 @@ export const MovieDetails = () => {
           <StyledMenuLink to="cast">Cast</StyledMenuLink>
         </StyledMenuItem>
         <StyledMenuItem>
-          <StyledMenuLink to="review">Review</StyledMenuLink>
+          <StyledMenuLink to="reviews">Reviews</StyledMenuLink>
         </StyledMenuItem>
       </StyledMenu>
-      <Suspense fallback={<div>Loading subpage...</div>}>
+      <Suspense fallback={<div className="centered"><Dna
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="dna-loading"
+            wrapperStyle={{}}
+            wrapperClass="dna-wrapper"
+          /></div>}>
         <Outlet />
       </Suspense>
     </div>

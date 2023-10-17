@@ -1,5 +1,5 @@
 // import { Routes, Route } from "react-router-dom";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate  } from 'react-router-dom';
 import { useState } from 'react';
 import { fetchSearchMovie } from '../api'
 import {StyledAppContainer} from './MoviesStyled'
@@ -8,6 +8,7 @@ import {StyledAppContainer} from './MoviesStyled'
 export const Movies = () => {
   const [inputValue, setInputValue] = useState(null);
   const [searchResult, setSearchResult] = useState(null)
+  const navigate = useNavigate ();
   const defaultImg =
     'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
 
@@ -21,7 +22,7 @@ export const Movies = () => {
         const response = await fetchSearchMovie(inputValue)
         setSearchResult(response.results);
         console.log(response);
-
+        navigate(`/movies?search-query=${inputValue}`);
     }
       catch(error) {
         console.log('помилка запиту');
@@ -83,6 +84,7 @@ export const Movies = () => {
         </li>
       </Link>
     ))}
+    {/* <Outlet /> */}
 </ul>
   </StyledAppContainer>
  

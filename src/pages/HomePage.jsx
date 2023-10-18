@@ -27,8 +27,8 @@ export default function HomePage() {
       <ul className="movielist">
         {showMovies &&
           trendList.map(trendItem => (
-            <Link to={`/movies/${trendItem.id}`}>
-              <li className="movieitem" key={trendItem.id}>
+            <Link to={`/movies/${trendItem.id}`} key={trendItem.id}>
+              <li className="movieitem" >
                 <h3 className="movietitle">
                   {trendItem.title || trendItem.name || 'movie'}
                 </h3>

@@ -16,13 +16,12 @@ export default function ReviewDetails() {
       });
   }, [movieId]);
   const reviewArray = Array.isArray(reviewData) ? reviewData : [];
-  console.log(reviewArray);
   return (
     <div>
       {reviewArray.length === 0 && <p>No reviews to display</p>}
       <ul className="movielist">
         {reviewArray.map(rData => (
-          <li className="movieitem">
+          <li className="movieitem" key={movieId}>
             <p>{rData.author}</p>
             <p>{rData.content}</p>
           </li>

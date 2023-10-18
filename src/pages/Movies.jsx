@@ -19,7 +19,6 @@ export default function Movies() {
     try {
       const response = await fetchSearchMovie(inputValue);
       setSearchResult(response.results);
-      console.log(response.total_results);
       navigate(`/movies?search-query=${inputValue}`);
       if (response.total_results === 0) {
         alert('there is no result');
@@ -51,7 +50,7 @@ export default function Movies() {
         {Array.isArray(searchResult) &&
           searchResult.map(searchitem => (
             <Link to={`/movies/${searchitem.id}`} key={searchitem.id}>
-              <li className="movieitem">
+              <li className="movieitem" key={searchitem.id}>
                 <h3 className="movietitle">
                   {searchitem.title || searchitem.name || 'movie'}
                 </h3>

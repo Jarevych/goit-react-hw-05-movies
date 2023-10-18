@@ -19,12 +19,11 @@ export default function CastDetails() {
       });
   }, [movieId]);
   const castArray = Array.isArray(castData) ? castData : [];
-  console.log(castArray);
   return (
     <StyledCastContainer>
       <ul className="movielist">
         {castArray.map(cData => (
-          <li className="movieitem">
+          <li className="movieitem" key={cData.cast_id}>
             <img
               className="cast-image"
               src={

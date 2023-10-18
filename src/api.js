@@ -12,7 +12,6 @@ export async function fetchMovies() {
         },
       }
     );
-    console.log(response.data);
 
     if (response.status !== 200) {
       throw new Error('There is now result for your query');
@@ -33,7 +32,6 @@ export async function fetchMovieDetails(movieId) {
         },
       }
     );
-    console.log(response.data);
 
     if (response.status !== 200) {
       throw new Error('There is now result for your query');
@@ -53,7 +51,6 @@ export async function fetchSearchMovie(inputValue) {
         },
       }
     );
-    console.log(response.data);
 
     if (response.status !== 200) {
       throw new Error('There is now result for your query');
@@ -71,7 +68,6 @@ export async function fetchMovieCast(movieId) {
         },
       }
     );
-    console.log(response.data);
 
     if (response.status !== 200) {
       throw new Error('There is now result for your query');
@@ -89,7 +85,6 @@ export async function fetchMovieReview(movieId) {
         },
       }
     );
-    console.log(response.data);
 
     if (response.status !== 200) {
       throw new Error('There is now result for your query');

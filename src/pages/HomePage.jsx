@@ -1,10 +1,9 @@
 import { useEffect, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-// import { Routes, Route } from "react-router-dom";
 import { fetchMovies } from 'api';
-import { StyledAppContainer } from './Home.Styled';
+import { StyledAppContainer } from './HomePageStyled';
 
-export const HomePage = () => {
+export default function HomePage() {
   const [trendList, setTrendList] = useState(null);
   const defaultImg =
     'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
@@ -12,9 +11,7 @@ export const HomePage = () => {
   const getTrendMovies = useCallback(async () => {
     try {
       const response = await fetchMovies();
-      //   const { results, page } = response;
       setTrendList(response.results);
-      //   console.log(trendList);
     } catch (error) {}
   }, []);
 
@@ -25,7 +22,7 @@ export const HomePage = () => {
   const showMovies = Array.isArray(trendList) && trendList.length;
   return (
     <StyledAppContainer>
-      <h2 className='page-title'>Trending today</h2>
+      <h2 className="page-title">Trending today</h2>
 
       <ul className="movielist">
         {showMovies &&
@@ -50,4 +47,4 @@ export const HomePage = () => {
       </ul>
     </StyledAppContainer>
   );
-};
+}

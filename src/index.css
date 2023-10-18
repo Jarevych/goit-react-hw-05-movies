@@ -21,3 +21,8 @@ code {
   align-items: center; /* Вертикальне відцентрування */
   height: 100vh; /* 100% висота екрану */
 }
+h2, h3, p, a, button {
+  font-family: monospace;
+  font-size: 18px;
+  line-height: 1.2;
+}

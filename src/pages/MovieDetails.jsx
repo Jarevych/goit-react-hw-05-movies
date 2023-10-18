@@ -1,6 +1,6 @@
-// import { Route, Routes } from 'react-router-dom';
-import { Suspense } from "react";
+import { Suspense } from 'react';
 import {
+  StyledMovieInfo,
   StyledButtonLink,
   StyledMenu,
   StyledMenuItem,
@@ -9,10 +9,9 @@ import {
 import { Outlet, useParams } from 'react-router-dom';
 import { fetchMovieDetails } from '../api';
 import { useEffect, useState } from 'react';
-import { Dna } from "react-loader-spinner";
-// import { CastDetails } from 'components/CastInfo';
+import { Dna } from 'react-loader-spinner';
 
-export const MovieDetails = () => {
+export default function MovieDetails() {
   const { movieId } = useParams();
   const [movieData, setMovieData] = useState(null);
   const defaultImg =
@@ -26,59 +25,74 @@ export const MovieDetails = () => {
       .catch(error => {
         console.log('помилка запиту');
       });
-    console.log(movieData);
-  }, []);
+  }, [movieId]);
 
   if (movieData === null) {
-    return <div className="centered"><Dna
-    visible={true}
-    height="80"
-    width="80"
-    ariaLabel="dna-loading"
-    wrapperStyle={{}}
-    wrapperClass="dna-wrapper"
-  /></div>;
+    return (
+      <div className="centered">
+        <Dna
+          visible={true}
+          height="80"
+          width="80"
+          ariaLabel="dna-loading"
+          wrapperStyle={{}}
+          wrapperClass="dna-wrapper"
+        />
+      </div>
+    );
   }
   return (
     <div>
       <StyledButtonLink to="/">Go Back </StyledButtonLink>
+      <StyledMovieInfo>
+        <div className="detail-img">
+          <img
+            src={
+              movieData.poster_path
+                ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}`
+                : defaultImg
+            }
+            alt={movieData.title}
+          />
+        </div>
+        <div className="detail-data">
+          <h3>{movieData.title || movieData.name}</h3>
+          <p className="details-info">User Score</p>
+          <p className="details-name">Owerview</p>
+          <p className="details-info">{movieData.overview}</p>
+          <p className="details-name">Genres</p>
+          <p className="details-info">
+            {movieData.genres.map(genre => genre.name).join(', ')}
+          </p>
+        </div>
+      </StyledMovieInfo>
       <div>
-        <img
-          src={
-            movieData.poster_path
-              ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}`
-              : defaultImg
+        <p className="details-info"></p>
+        <StyledMenu>
+          <StyledMenuItem>
+            <StyledMenuLink to="cast">Cast</StyledMenuLink>
+          </StyledMenuItem>
+          <StyledMenuItem>
+            <StyledMenuLink to="reviews">Reviews</StyledMenuLink>
+          </StyledMenuItem>
+        </StyledMenu>
+        <Suspense
+          fallback={
+            <div className="centered">
+              <Dna
+                visible={true}
+                height="80"
+                width="80"
+                ariaLabel="dna-loading"
+                wrapperStyle={{}}
+                wrapperClass="dna-wrapper"
+              />
+            </div>
           }
-          alt={movieData.title}
-        />
-        <h3>{movieData.title || movieData.name}</h3>
-        <p className="details-info">User Score</p>
-        <p className="details-name">Owerview</p>
-        <p className="details-info">{movieData.overview}</p>
-        <p className="details-name">Genres</p>
-        <p className="details-info">
-          {movieData.genres.map(genre => genre.name).join(', ')}
-        </p>
+        >
+          <Outlet />
+        </Suspense>
       </div>
-      <p className="details-info"></p>
-      <StyledMenu>
-        <StyledMenuItem>
-          <StyledMenuLink to="cast">Cast</StyledMenuLink>
-        </StyledMenuItem>
-        <StyledMenuItem>
-          <StyledMenuLink to="reviews">Reviews</StyledMenuLink>
-        </StyledMenuItem>
-      </StyledMenu>
-      <Suspense fallback={<div className="centered"><Dna
-            visible={true}
-            height="80"
-            width="80"
-            ariaLabel="dna-loading"
-            wrapperStyle={{}}
-            wrapperClass="dna-wrapper"
-          /></div>}>
-        <Outlet />
-      </Suspense>
     </div>
   );
-};
+}

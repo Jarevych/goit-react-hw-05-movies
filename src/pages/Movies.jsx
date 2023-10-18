@@ -50,7 +50,7 @@ export default function Movies() {
         {Array.isArray(searchResult) &&
           searchResult.map(searchitem => (
             <Link to={`/movies/${searchitem.id}`} key={searchitem.id}>
-              <li className="movieitem" key={searchitem.id}>
+              <li className="movieitem">
                 <h3 className="movietitle">
                   {searchitem.title || searchitem.name || 'movie'}
                 </h3>

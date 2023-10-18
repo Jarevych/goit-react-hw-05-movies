@@ -21,7 +21,7 @@ export default function ReviewDetails() {
       {reviewArray.length === 0 && <p>No reviews to display</p>}
       <ul className="movielist">
         {reviewArray.map(rData => (
-          <li className="movieitem" key={movieId}>
+          <li className="movieitem" key={rData.id}>
             <p>{rData.author}</p>
             <p>{rData.content}</p>
           </li>

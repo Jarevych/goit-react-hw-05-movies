@@ -17,7 +17,7 @@ export default function HomePage() {
 
   useEffect(() => {
     getTrendMovies();
-  }, [getTrendMovies]);
+  });
 
   const showMovies = Array.isArray(trendList) && trendList.length;
   return (

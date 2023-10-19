@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { fetchSearchMovie } from '../api';
 import { StyledAppContainer } from './MoviesStyled';
@@ -7,7 +7,7 @@ export default function Movies() {
   
   const [inputValue, setInputValue] = useState(null);
   const location = useLocation();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const defaultImg = 'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
   const [searchResult, setSearchResult] = useState([]);
 
@@ -24,7 +24,7 @@ export default function Movies() {
       try {
         const response = await fetchSearchMovie(inputValue);
         setSearchResult(response.results);
-  
+        navigate(`/movies?search-query=${inputValue}`);
         if (response.total_results === 0) {
           alert('there are no results');
         }
@@ -35,7 +35,7 @@ export default function Movies() {
       }
     };
     Search()
-  },[inputValue]);
+  },[inputValue, navigate]);
 
   return (
     <StyledAppContainer>
@@ -55,7 +55,7 @@ export default function Movies() {
       <ul className="movielist">
       {Array.isArray(searchResult) &&
           searchResult.map(searchitem => (
-            <Link state={{ from: location }} to={`/movies/${searchitem.id}`} key={searchitem.id}>
+            <Link  to={`/movies/${searchitem.id}`} state={{ from: location }} key={searchitem.id}>
               <li className="movieitem">
                 <h3 className="movietitle">
                   {searchitem.title || searchitem.name || 'movie'}

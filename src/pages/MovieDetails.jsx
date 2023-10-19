@@ -15,7 +15,7 @@ export default function MovieDetails() {
   const { movieId } = useParams();
   const [movieData, setMovieData] = useState(null);
   const location = useLocation();
-  const goBackTo = location.state.from ?? '/';
+  const goBackTo = location.state.from;
   const defaultImg =
     'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
 

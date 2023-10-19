@@ -6,7 +6,7 @@ import {
   StyledMenuItem,
   StyledMenuLink,
 } from './MovieDetailsStyled';
-import { Outlet, useParams } from 'react-router-dom';
+import { Outlet, useParams, useLocation } from 'react-router-dom';
 import { fetchMovieDetails } from '../api';
 import { useEffect, useState } from 'react';
 import { Dna } from 'react-loader-spinner';
@@ -14,6 +14,8 @@ import { Dna } from 'react-loader-spinner';
 export default function MovieDetails() {
   const { movieId } = useParams();
   const [movieData, setMovieData] = useState(null);
+  const location = useLocation();
+  const goBackTo = location.state.from ?? '/';
   const defaultImg =
     'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
 
@@ -43,7 +45,7 @@ export default function MovieDetails() {
   }
   return (
     <div>
-      <StyledButtonLink to="/">Go Back </StyledButtonLink>
+      <StyledButtonLink to={goBackTo}>Go Back </StyledButtonLink>
       <StyledMovieInfo>
         <div className="detail-img">
           <img

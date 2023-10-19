@@ -1,10 +1,11 @@
 import { useEffect, useState, useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { fetchMovies } from 'api';
 import { StyledAppContainer } from './HomePageStyled';
 
 export default function HomePage() {
   const [trendList, setTrendList] = useState(null);
+  const location = useLocation();
   const defaultImg =
     'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
 
@@ -27,7 +28,8 @@ export default function HomePage() {
       <ul className="movielist">
         {showMovies &&
           trendList.map(trendItem => (
-            <Link to={`/movies/${trendItem.id}`} key={trendItem.id}>
+            // <Link  to={`/movies/${id}`}>
+            <Link state={{ from: location }} to={`/movies/${trendItem.id}`} key={trendItem.id}>
               <li className="movieitem" >
                 <h3 className="movietitle">
                   {trendItem.title || trendItem.name || 'movie'}

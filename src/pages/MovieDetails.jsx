@@ -74,10 +74,10 @@ export default function MovieDetails() {
         <p className="details-info"></p>
         <StyledMenu>
           <StyledMenuItem>
-            <StyledMenuLink to={`${goBackTo}/cast`} >Cast</StyledMenuLink>
+            <StyledMenuLink to={`cast`} >Cast</StyledMenuLink>
           </StyledMenuItem>
           <StyledMenuItem>
-            <StyledMenuLink to={"./reviews"}>Reviews</StyledMenuLink>
+            <StyledMenuLink to={"reviews"}>Reviews</StyledMenuLink>
           </StyledMenuItem>
         </StyledMenu>
         <Suspense

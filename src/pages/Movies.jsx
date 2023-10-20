@@ -1,11 +1,11 @@
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useNavigate, useLocation, useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { fetchSearchMovie } from '../api';
 import { StyledAppContainer } from './MoviesStyled';
 
 export default function Movies() {
-  
-  const [inputValue, setInputValue] = useState(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const inputValue = searchParams.get("input") || "";
   const location = useLocation();
   const navigate = useNavigate();
   const defaultImg = 'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
@@ -14,8 +14,10 @@ export default function Movies() {
   const handleSubmit = e => {
     e.preventDefault();
     const input = e.currentTarget.elements.keyword.value;
-    setInputValue(input);
-    console.log(inputValue);
+    const query = input !== "" ? { input } : {};
+    setSearchParams(query);
+    console.log(searchParams.get("input"));
+    e.currentTarget.reset();
   };
 
   useEffect (()=> {
@@ -24,15 +26,13 @@ export default function Movies() {
       try {
         const response = await fetchSearchMovie(inputValue);
         setSearchResult(response.results);
-        navigate(`/movies?search-query=${inputValue}`);
+      
         if (response.total_results === 0) {
           alert('there are no results');
         }
       } catch (error) {
         console.log('помилка запиту');
-      } finally {
-        setInputValue('');
-      }
+      } 
     };
     Search()
   },[inputValue, navigate]);

@@ -11,6 +11,7 @@ export const StyledMovieInfo = styled.div`
 
 export const StyledButtonLink = styled(Link)`
   display: flex;
+  align-items: center;
   padding: 0 20px;
   margin: 10px;
   background-color: #007bff;
@@ -21,7 +22,6 @@ export const StyledButtonLink = styled(Link)`
   cursor: pointer;
   width: 72px;
   height: 34px;
-  line-height: none;
   &:hover {
     background-color: #0056b3;
   }

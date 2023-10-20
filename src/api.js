@@ -2,12 +2,13 @@ import axios from 'axios';
 
 const API_KEY = '9d5899cc0470980530f09016862b9ba9';
 
-export async function fetchMovies() {
+export async function fetchMovies(page) {
   try {
     const response = await axios.get(
       'https://api.themoviedb.org/3/trending/all/day',
       {
         params: {
+          page: page,
           api_key: API_KEY,
         },
       }

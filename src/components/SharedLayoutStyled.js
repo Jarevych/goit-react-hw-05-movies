@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 export const StyledAppHeader = styled.div`
   position: relative;
-  padding: 0 20px;
+  padding: 0 20px 20px 20px;
   box-shadow: 0 5px 10px gray;
   .header-nav {
     display: flex;

@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 
 export const StyledAppContainer = styled.div`
-  .searchbutton {
-    position: absolute;
-    height: 38px;
-    background: none;
-    border: none;
-  }
+  // .searchbutton {
+  //   position: absolute;
+  //   height: 38px;
+  //   background: none;
+  //   border: none;
+  // }
+  
   .movielist {
     display: flex;
     justify-content: center;
@@ -24,4 +25,24 @@ export const StyledAppContainer = styled.div`
   .page-title {
     text-align: center;
   }
+  .searchbtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  padding: 0 20px;
+  margin: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  // width: 72px;
+  height: 34px;
+  margin-bottom: 20px;
+  &:hover {
+    background-color: #0056b3;
+
+  }
+  
 `;

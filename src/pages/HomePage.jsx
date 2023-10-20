@@ -6,19 +6,24 @@ import { StyledAppContainer } from './HomePageStyled';
 export default function HomePage() {
   const [trendList, setTrendList] = useState(null);
   const location = useLocation();
+  const [page, setPage] = useState(1);
   const defaultImg =
     'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
 
+  const HandleLoadMore = () => {
+    setPage((prevPage) => prevPage + 1);
+    console.log(page)
+  }  
   const getTrendMovies = useCallback(async () => {
     try {
-      const response = await fetchMovies();
-      setTrendList(response.results);
+      const response = await fetchMovies(page);
+      setTrendList((prevList) => [...(prevList) || [], ...(response.results || [])]);
     } catch (error) {}
-  }, []);
+  }, [page]);
 
   useEffect(() => {
     getTrendMovies();
-  });
+  },[getTrendMovies]);
 
   const showMovies = Array.isArray(trendList) && trendList.length;
   return (
@@ -46,6 +51,7 @@ export default function HomePage() {
             </Link>
           ))}
       </ul>
+      <button className='searchbtn' type='button' onClick={HandleLoadMore}>Load more</button>
     </StyledAppContainer>
   );
 }

@@ -28,7 +28,6 @@ export default function HomePage() {
       <ul className="movielist">
         {showMovies &&
           trendList.map(trendItem => (
-            // <Link  to={`/movies/${id}`}>
             <Link state={{ from: location }} to={`/movies/${trendItem.id}`} key={trendItem.id}>
               <li className="movieitem" >
                 <h3 className="movietitle">
